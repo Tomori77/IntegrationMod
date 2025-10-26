@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <DuckovPath>D:\steam\steamapps\common\Escape from Duckov</DuckovPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Stubs\**\*.cs" />
+    <Compile Remove="Disabled\**\*.cs" />
+  </ItemGroup>
+
+  <Choose>
+    <When Condition="Exists('$(DuckovPath)\Duckov.exe')">
+      <PropertyGroup>
+        <DefineConstants>WITH_DUCKOV</DefineConstants>
+      </PropertyGroup>
+      <ItemGroup>
+        <Reference Include="$(DuckovPath)\Duckov_Data\Managed\TeamSoda.*" />
+        <Reference Include="$(DuckovPath)\Duckov_Data\Managed\ItemStatsSystem.dll" />
+        <Reference Include="$(DuckovPath)\Duckov_Data\Managed\Unity*" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <DefineConstants>WITHOUT_DUCKOV</DefineConstants>
+      </PropertyGroup>
+      <ItemGroup>
+        <Compile Include="Stubs\DuckovStubs.cs" />
+        <Compile Include="Stubs\UnityStubs.cs" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+</Project>

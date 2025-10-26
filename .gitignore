@@ -1,0 +1,26 @@
+# Build outputs
+src/bin/
+src/obj/
+
+# Test outputs
+tests/bin/
+tests/obj/
+
+# Local packaging folder (example only; no binaries in repo)
+ReleaseExample/IntegrationMod/*.dll
+ReleaseExample/IntegrationMod/*.pdb
+ReleaseExample/IntegrationMod/*.deps.json
+ReleaseExample/IntegrationMod/0Harmony.dll
+
+# IDE cache
+*.user
+*.suo
+*.userprefs
+.vscode/
+
+# Logs
+*.log
+
+# Misc
+*.DS_Store
+Thumbs.db
